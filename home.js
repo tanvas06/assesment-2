@@ -21,10 +21,10 @@
     'Welcome back, Andrew'
 */
 
-//CODE HERE
+const greetUser = userName => `Welcome back, ${userName}`
 
 
-
+console.log(greetUser(`tanner`))
 
 
 //////////////////PROBLEM 2////////////////////
@@ -42,14 +42,21 @@
 
     For example:
     canWeDeliver(84606) 
-        // `Sorry, we can't deliver to that address`
+        // 
     canWeDeliver(85205) 
-        // `You're in our delivery zone!`
+        // 
 */
 
 const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206]
 
-//CODE HERE
+const canWeDeliver = zipcode => {
+    for(let i = 0; i < deliveryAreaZipCodes.length; i++){
+        if(zipcode = deliveryAreaZipCodes[i]){
+            return `You're in our delivery zone!`
+        }
+    }
+    return `Sorry, we can't deliver to that address`
+}
 
 
 
@@ -70,7 +77,13 @@ const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206]
     Name your new function `canWeDeliverTwo`.
 */
 
-// CODE HERE
+const canWeDeliverTwo = zipcode => {
+    if(deliveryAreaZipCodes.includes(zipcode)){
+        return `You're in our delivery zone!`
+    } else {
+        return `Sorry, we can't deliver to that address`
+    }
+}
 
 
 //////////////////PROBLEM 3////////////////////
@@ -106,8 +119,7 @@ const deals = [
     to replace the 15 with a 10.
 */
 
-//CODE HERE
-
+deals[0].title = deals[0].title.replace(`15`, `10`)
 
 
 /*
@@ -123,4 +135,6 @@ const deals = [
     to be displaying wrong on the live site.
 */
 
-//CODE HERE
+deals[1].desc = deals[1].desc.replace(`March`, `April`).trim()
+
+console.log(deals)

@@ -99,7 +99,7 @@ data in some functions that you'll write.
 const foodArr =[
     {
          name: `Tims Pizza`,
-        price: `13.00`,
+        price: 13.00,
         category: `entree`,
         popularity: 77,
         rating: 3.3,
@@ -107,15 +107,15 @@ const foodArr =[
     },
     {
          name: `Tims Pizza`,
-        price: `14.00`,
-        category: `entree`,
+        price: 14.00,
+        category: entree,
         popularity: 91,
         rating: 4.7,
         tags:[`vegan`, `sides`,`thinCrust`]
     },
     {
          name: `Tims Pizza`,
-        price: `12.00`,
+        price: 12.00,
         category: `entree`,
         popularity: 82,
         rating: 4.2,
@@ -123,7 +123,7 @@ const foodArr =[
     },
     {
          name: `Tims Pizza`,
-        price: `11.00`,
+        price: 11.00,
         category: `entree`,
         popularity: 67,
         rating: 2.5,
@@ -131,7 +131,7 @@ const foodArr =[
     },
     {
          name: `Tims Pizza`,
-        price: `12.00`,
+        price: 12.00,
         category: `entree`,
         popularity: 80,
         rating: 3.9,
@@ -155,7 +155,9 @@ const foodArr =[
 */
 
 
-const filteredFood = foodArr.filter(element => element.tags === foodArr.tags[`sides`])
+const filteredFood = foodArr.filter((pizzaObj=> {
+    return pizzaObj.tags.includes(`sides`)
+}))
 
 // console.log(filteredFood)
 
@@ -200,11 +202,21 @@ const filteredFood = foodArr.filter(element => element.tags === foodArr.tags[`si
 */
 
 const filterByProperty = function(property, number, type){
-    let filltered = foodArr.filter(element => {
-        if(element.rating > 4 && element.popularity > 90)
-        return element[0]
-    }
-})
+   const filtered = foodArr.fillter(pizza => {
+       if(type === `above`){
+           return pizza[property] > number
+       }
+       else if (type = `below`){
+           return pizza[property] < number
+       }
+       else {
+           return `you did not pass a valid type`
+       }
+   }
+
+   )
+   return filtered
+}
 
 
 /*
@@ -214,4 +226,4 @@ const filterByProperty = function(property, number, type){
     You'll have to console.log to see the filtered array
 */
 
-//CODE HERE
+console.log(filterByProperty(`price`, 12.00, `above`))
